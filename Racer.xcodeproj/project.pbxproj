@@ -9,23 +9,35 @@
 /* Begin PBXBuildFile section */
 		BF79598E25D59FC1007A0325 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF79598D25D59FC1007A0325 /* AppDelegate.swift */; };
 		BF79599025D59FC1007A0325 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF79598F25D59FC1007A0325 /* SceneDelegate.swift */; };
-		BF79599225D59FC1007A0325 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF79599125D59FC1007A0325 /* ViewController.swift */; };
 		BF79599525D59FC1007A0325 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF79599325D59FC1007A0325 /* Main.storyboard */; };
 		BF79599825D59FC1007A0325 /* Racer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF79599625D59FC1007A0325 /* Racer.xcdatamodeld */; };
 		BF79599A25D59FC6007A0325 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF79599925D59FC6007A0325 /* Assets.xcassets */; };
 		BF79599D25D59FC6007A0325 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF79599B25D59FC6007A0325 /* LaunchScreen.storyboard */; };
+		BF7959AD25D5A10D007A0325 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7959AC25D5A10D007A0325 /* HomeViewController.swift */; };
+		BF7959B225D5A125007A0325 /* LinkToPartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7959B125D5A125007A0325 /* LinkToPartnerViewController.swift */; };
+		BF7959B525D5A139007A0325 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7959B425D5A139007A0325 /* ProfileViewController.swift */; };
+		BF7959BA25D5A150007A0325 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7959B925D5A150007A0325 /* LoginViewController.swift */; };
+		BF7959BE25D5A160007A0325 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7959BD25D5A160007A0325 /* RegisterViewController.swift */; };
+		BF7959C325D5A1C6007A0325 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7959C225D5A1C6007A0325 /* Constants.swift */; };
+		BF7959C625D5A1D3007A0325 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7959C525D5A1D3007A0325 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BF79598A25D59FC1007A0325 /* Racer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Racer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF79598D25D59FC1007A0325 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF79598F25D59FC1007A0325 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BF79599125D59FC1007A0325 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BF79599425D59FC1007A0325 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF79599725D59FC1007A0325 /* Racer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Racer.xcdatamodel; sourceTree = "<group>"; };
 		BF79599925D59FC6007A0325 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF79599C25D59FC6007A0325 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF79599E25D59FC6007A0325 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF7959AC25D5A10D007A0325 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BF7959B125D5A125007A0325 /* LinkToPartnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkToPartnerViewController.swift; sourceTree = "<group>"; };
+		BF7959B425D5A139007A0325 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BF7959B925D5A150007A0325 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BF7959BD25D5A160007A0325 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		BF7959C225D5A1C6007A0325 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BF7959C525D5A1D3007A0325 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +70,78 @@
 		BF79598C25D59FC1007A0325 /* Racer */ = {
 			isa = PBXGroup;
 			children = (
-				BF79598D25D59FC1007A0325 /* AppDelegate.swift */,
-				BF79598F25D59FC1007A0325 /* SceneDelegate.swift */,
-				BF79599125D59FC1007A0325 /* ViewController.swift */,
-				BF79599325D59FC1007A0325 /* Main.storyboard */,
-				BF79599925D59FC6007A0325 /* Assets.xcassets */,
-				BF79599B25D59FC6007A0325 /* LaunchScreen.storyboard */,
+				BF7959A825D5A070007A0325 /* Controllers */,
+				BF7959A725D5A06A007A0325 /* Views */,
+				BF7959A625D5A068007A0325 /* ViewModels */,
+				BF7959AA25D5A0BE007A0325 /* Models */,
+				BF7959A525D5A063007A0325 /* Resources */,
 				BF79599E25D59FC6007A0325 /* Info.plist */,
 				BF79599625D59FC1007A0325 /* Racer.xcdatamodeld */,
 			);
 			path = Racer;
+			sourceTree = "<group>";
+		};
+		BF7959A525D5A063007A0325 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BF79598D25D59FC1007A0325 /* AppDelegate.swift */,
+				BF79598F25D59FC1007A0325 /* SceneDelegate.swift */,
+				BF7959C225D5A1C6007A0325 /* Constants.swift */,
+				BF7959C525D5A1D3007A0325 /* Extensions.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BF7959A625D5A068007A0325 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		BF7959A725D5A06A007A0325 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BF79599925D59FC6007A0325 /* Assets.xcassets */,
+				BF7959C025D5A17F007A0325 /* Storyboards */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BF7959A825D5A070007A0325 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BF7959AC25D5A10D007A0325 /* HomeViewController.swift */,
+				BF7959B125D5A125007A0325 /* LinkToPartnerViewController.swift */,
+				BF7959B425D5A139007A0325 /* ProfileViewController.swift */,
+				BF7959AB25D5A0CF007A0325 /* Login&Register */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BF7959AA25D5A0BE007A0325 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BF7959AB25D5A0CF007A0325 /* Login&Register */ = {
+			isa = PBXGroup;
+			children = (
+				BF7959B925D5A150007A0325 /* LoginViewController.swift */,
+				BF7959BD25D5A160007A0325 /* RegisterViewController.swift */,
+			);
+			path = "Login&Register";
+			sourceTree = "<group>";
+		};
+		BF7959C025D5A17F007A0325 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				BF79599325D59FC1007A0325 /* Main.storyboard */,
+				BF79599B25D59FC6007A0325 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,10 +214,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF79599225D59FC1007A0325 /* ViewController.swift in Sources */,
+				BF7959BE25D5A160007A0325 /* RegisterViewController.swift in Sources */,
+				BF7959B225D5A125007A0325 /* LinkToPartnerViewController.swift in Sources */,
+				BF7959AD25D5A10D007A0325 /* HomeViewController.swift in Sources */,
 				BF79598E25D59FC1007A0325 /* AppDelegate.swift in Sources */,
+				BF7959BA25D5A150007A0325 /* LoginViewController.swift in Sources */,
+				BF7959C625D5A1D3007A0325 /* Extensions.swift in Sources */,
+				BF7959B525D5A139007A0325 /* ProfileViewController.swift in Sources */,
 				BF79599025D59FC1007A0325 /* SceneDelegate.swift in Sources */,
 				BF79599825D59FC1007A0325 /* Racer.xcdatamodeld in Sources */,
+				BF7959C325D5A1C6007A0325 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
