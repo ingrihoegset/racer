@@ -6,14 +6,61 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FBSDKLoginKit
 
 class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out",
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(didTapLogOut))
     }
+    
+    @objc func didTapLogOut() {
+        
+        let actionSheet = UIAlertController(title: "Are you sure you'd like to log out?",
+                                      message: "",
+                                      preferredStyle: .alert)
+        actionSheet.addAction(UIAlertAction(title: "Log Out",
+                                      style: .destructive,
+                                      handler: { [weak self] _ in
+                                        
+                                        guard let strongSelf = self else {
+                                            return
+                                        }
+                                        
+                                        // Log out from facebook
+                                        FBSDKLoginKit.LoginManager().logOut()
+                                        
+                                        do {
+                                            // Telling Firebase to log user out
+                                            try FirebaseAuth.Auth.auth().signOut()
+                                            
+                                            let vc = LoginViewController()
+                                            let nav = UINavigationController(rootViewController: vc)
+                                            nav.modalPresentationStyle = .fullScreen
+                                            strongSelf.present(nav, animated: true)
+                                        }
+                                        catch {
+                                            print("Failed to log out")
+                                        }
+                                        
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel",
+                                            style: .cancel,
+                                            handler: nil))
+        
+        present(actionSheet, animated: true)
+        
+
+        
+    }
+    
     
 
     /*

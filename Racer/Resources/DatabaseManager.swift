@@ -36,7 +36,7 @@ extension DatabaseManager {
             
             completion(true)
         })
-        
+         
     }
     
     /// Insert new user to databaes
