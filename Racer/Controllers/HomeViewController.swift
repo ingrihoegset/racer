@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
         // test
         super.viewDidLoad()
         view.backgroundColor = .link
+        
 
         // Do any additional setup after loading the view.
     }

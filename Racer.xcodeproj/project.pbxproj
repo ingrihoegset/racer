@@ -22,6 +22,7 @@
 		BF7959C325D5A1C6007A0325 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7959C225D5A1C6007A0325 /* Constants.swift */; };
 		BF7959C625D5A1D3007A0325 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7959C525D5A1D3007A0325 /* Extensions.swift */; };
 		BF7959FD25D95C4D007A0325 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7959FC25D95C4D007A0325 /* GoogleService-Info.plist */; };
+		BF795A0125D96B05007A0325 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF795A0025D96B05007A0325 /* DatabaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		BF7959C225D5A1C6007A0325 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BF7959C525D5A1D3007A0325 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BF7959FC25D95C4D007A0325 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BF795A0025D96B05007A0325 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				BF79598F25D59FC1007A0325 /* SceneDelegate.swift */,
 				BF7959C225D5A1C6007A0325 /* Constants.swift */,
 				BF7959C525D5A1D3007A0325 /* Extensions.swift */,
+				BF795A0025D96B05007A0325 /* DatabaseManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF7959BE25D5A160007A0325 /* RegisterViewController.swift in Sources */,
+				BF795A0125D96B05007A0325 /* DatabaseManager.swift in Sources */,
 				BF7959B225D5A125007A0325 /* LinkToPartnerViewController.swift in Sources */,
 				BF7959AD25D5A10D007A0325 /* HomeViewController.swift in Sources */,
 				BF79598E25D59FC1007A0325 /* AppDelegate.swift in Sources */,
