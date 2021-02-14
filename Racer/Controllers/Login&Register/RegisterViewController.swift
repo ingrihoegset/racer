@@ -55,6 +55,7 @@ class RegisterViewController: UIViewController {
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         field.leftViewMode = .always
         field.isSecureTextEntry = true
+        field.textContentType = .none
         return field
     }()
     
@@ -107,11 +108,11 @@ class RegisterViewController: UIViewController {
 
         // Adding subviews
         view.addSubview(scrollView)
+        scrollView.addSubview(firstNameField)
+        scrollView.addSubview(lastNameField)
         scrollView.addSubview(imageView)
         scrollView.addSubview(emailField)
         scrollView.addSubview(passwordField)
-        scrollView.addSubview(firstNameField)
-        scrollView.addSubview(lastNameField)
         scrollView.addSubview(registerButton)
         
         // Other
