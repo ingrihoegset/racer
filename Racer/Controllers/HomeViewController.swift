@@ -13,8 +13,12 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         // test
         super.viewDidLoad()
-        view.backgroundColor = .link
+        view.backgroundColor = Constants.mainColor
         
+        // Temporary button for linking to user
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                            target: self,
+                                                            action: #selector(didTapLinkToPartnerButton))
 
         // Do any additional setup after loading the view.
     }
@@ -32,6 +36,12 @@ class HomeViewController: UIViewController {
             nav.modalPresentationStyle = .fullScreen
             present(nav, animated: false)
         }
+    }
+    
+    @objc private func didTapLinkToPartnerButton() {
+        let vc = LinkToPartnerViewController()
+        let navVC = UINavigationController(rootViewController: vc)
+        present(navVC, animated: true)
     }
 
 

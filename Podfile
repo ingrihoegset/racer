@@ -8,6 +8,7 @@ target 'Racer' do
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database' 
+pod 'Firebase/Storage' 
 
 # Facebook Log in  
 pod 'FBSDKLoginKit'
@@ -15,5 +16,8 @@ pod 'FBSDKLoginKit'
 # Google sign in
 pod 'GoogleSignIn' 
 
+# UI-related
+pod 'JGProgressHUD'
+pod 'SDWebImage'
 
 end

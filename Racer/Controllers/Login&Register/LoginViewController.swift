@@ -9,8 +9,11 @@ import UIKit
 import FirebaseAuth
 import FBSDKLoginKit
 import GoogleSignIn
+import JGProgressHUD
 
 class LoginViewController: UIViewController {
+    
+    private let spinner = JGProgressHUD(style: .dark)
 
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -154,7 +157,6 @@ class LoginViewController: UIViewController {
                                  y: passwordField.bottom + 10,
                                  width: scrollView.width - Constants.sideSpacing * 2,
                                  height: Constants.fieldHeight)
-        fbLoginButton.center = scrollView.center
         fbLoginButton.frame = CGRect(x: Constants.sideSpacing,
                                  y: logginButton.bottom + 20,
                                  width: scrollView.width - Constants.sideSpacing * 2,
@@ -185,10 +187,16 @@ class LoginViewController: UIViewController {
             return
         }
         
+        spinner.show(in: view)
+        
         //Firebase log in
         FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: { [weak self] authResult, error in
             guard let strongSelf = self else {
                 return
+            }
+            
+            DispatchQueue.main.async {
+                strongSelf.spinner.dismiss()
             }
             
             guard let result = authResult, error == nil else {
@@ -241,7 +249,7 @@ extension LoginViewController: LoginButtonDelegate {
         
         // Makes a requestobject to Facebook to get the email and name from the logged in user
         let facebookRequest = FBSDKLoginKit.GraphRequest(graphPath: "me",
-                                                         parameters: ["fields": "email, name"],
+                                                         parameters: ["fields": "email, first_name, last_name, picture.type(large)"],
                                                          tokenString: token,
                                                          version: nil,
                                                          httpMethod: .get)
@@ -254,29 +262,54 @@ extension LoginViewController: LoginButtonDelegate {
             }
             
             // Unwrapping data from Facebook get-request
-            guard let userName = result["name"] as? String,
-                  let email = result["email"] as? String else {
+            guard let firstName = result["first_name"] as? String,
+                  let lastName = result["last_name"] as? String,
+                  let email = result["email"] as? String,
+                  let picture = result["picture"] as? [String: Any],
+                  let data = picture["data"] as? [String: Any],
+                  let pictureUrl = data["url"] as? String else {
                 print("Failed to get name and email from FB get")
                 return
             }
             
-            // --- OBS!!! --- Unwrap actual names //
-            // Splits the name to get the first and last names seperated
-            let nameComponents = userName.components(separatedBy: " ")
-            guard nameComponents.count == 3 else {
-                return
-            }
-            
-            let firstName = nameComponents[0]
-            let lastName = nameComponents[1]
             
             // Checking if user exists in database already
             DatabaseManager.shared.userExists(with: email, completion: { exists in
                 // If user doesnt exist already, we insert it into the database
                 if !exists {
-                    DatabaseManager.shared.insertUser(with: RaceAppUser(firstName: firstName,
-                                                                        lastName: lastName,
-                                                                        emailAddress: email))
+                    let raceUser = RaceAppUser(firstName: firstName,
+                                               lastName: lastName,
+                                               emailAddress: email)
+                    DatabaseManager.shared.insertUser(with: raceUser, completion: { success in
+                        if success {
+                            guard let url = URL(string: pictureUrl) else {
+                                return
+                            }
+                            
+                            print("Downloading data from facebook image")
+                            
+                            URLSession.shared.dataTask(with: url, completionHandler:{ data, _, _ in
+                                guard let data = data else {
+                                    print("Failed to get data from Facebook")
+                                    return
+                                }
+                                
+                                print("Got data from Facebook, uploading...")
+                                
+                                // upload image
+                                let filename = raceUser.profilePictureFileName
+                                StorageManager.shared.uploadProfilePicture(with: data, fileName: filename, completion: { result in
+                                    switch result {
+                                    case .success(let downloadUrl):
+                                        UserDefaults.standard.set(downloadUrl, forKey: "profile_picture_url")
+                                        print(downloadUrl)
+                                    case .failure(let error):
+                                        print("Storage manager error: \(error)")
+                                    }
+                                })
+                            }).resume()
+                        }
+                    })
                 }
             })
             
