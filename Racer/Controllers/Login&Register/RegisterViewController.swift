@@ -247,13 +247,6 @@ class RegisterViewController: UIViewController {
         })
     }
     
-    @objc private func didTapRegister() {
-        let vc = RegisterViewController()
-        vc.title = "Create account"
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    
     @objc private func didTapChangeProfilePicture() {
         print("change pic")
         presentPhotoPicker()
@@ -297,7 +290,6 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
         vc.allowsEditing = true
         present(vc, animated: true)
     }
-    
 }
 
 

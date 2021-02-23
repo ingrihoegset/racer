@@ -40,8 +40,19 @@ class HomeViewController: UIViewController {
     
     @objc private func didTapLinkToPartnerButton() {
         let vc = LinkToPartnerViewController()
+        vc.completion = { [weak self] result in
+            print("result\(result)")
+            self?.goToSetUpWithPartner(partnerId: result)
+        }
         let navVC = UINavigationController(rootViewController: vc)
         present(navVC, animated: true)
+    }
+    
+    func goToSetUpWithPartner(partnerId: String) {
+        let vc = SetUpRaceWithPartnerViewController()
+        vc.partnerId = partnerId
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 

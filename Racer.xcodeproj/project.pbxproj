@@ -24,6 +24,7 @@
 		BF7959FD25D95C4D007A0325 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7959FC25D95C4D007A0325 /* GoogleService-Info.plist */; };
 		BF795A0125D96B05007A0325 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF795A0025D96B05007A0325 /* DatabaseManager.swift */; };
 		BF795AAD25E2CEFE007A0325 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF795AAC25E2CEFE007A0325 /* StorageManager.swift */; };
+		BF795AB625E58CFC007A0325 /* SetUpRaceWithPartnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF795AB525E58CFC007A0325 /* SetUpRaceWithPartnerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		BF7959FC25D95C4D007A0325 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF795A0025D96B05007A0325 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		BF795AAC25E2CEFE007A0325 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		BF795AB525E58CFC007A0325 /* SetUpRaceWithPartnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpRaceWithPartnerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,8 +147,9 @@
 			isa = PBXGroup;
 			children = (
 				BF7959AC25D5A10D007A0325 /* HomeViewController.swift */,
-				BF7959B125D5A125007A0325 /* LinkToPartnerViewController.swift */,
 				BF7959B425D5A139007A0325 /* ProfileViewController.swift */,
+				BF7959B125D5A125007A0325 /* LinkToPartnerViewController.swift */,
+				BF795AB525E58CFC007A0325 /* SetUpRaceWithPartnerViewController.swift */,
 				BF7959AB25D5A0CF007A0325 /* Login&Register */,
 			);
 			path = Controllers;
@@ -320,6 +323,7 @@
 				BF7959C625D5A1D3007A0325 /* Extensions.swift in Sources */,
 				BF7959B525D5A139007A0325 /* ProfileViewController.swift in Sources */,
 				BF79599025D59FC1007A0325 /* SceneDelegate.swift in Sources */,
+				BF795AB625E58CFC007A0325 /* SetUpRaceWithPartnerViewController.swift in Sources */,
 				BF79599825D59FC1007A0325 /* Racer.xcdatamodeld in Sources */,
 				BF7959C325D5A1C6007A0325 /* Constants.swift in Sources */,
 			);

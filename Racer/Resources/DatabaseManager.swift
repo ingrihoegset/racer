@@ -15,6 +15,12 @@ final class DatabaseManager {
     
     private let database = Database.database().reference()
     
+    static func safeEmail(emailAddress: String) -> String {
+        var safeEmail = emailAddress.replacingOccurrences(of: ".", with: "-")
+        safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+        return safeEmail
+    }
+    
 
 }
 
@@ -54,6 +60,22 @@ extension DatabaseManager {
         })
     }
 }
+
+// MARK: - Sending times
+
+extension DatabaseManager {
+    
+    public func createNewRace(with otherUserEmail: String, startTime: String, completion: @escaping (Bool) -> Void) {
+        
+    }
+    
+    public func sendTime(toRace: String, time: String, completion: @escaping (Bool) -> Void) {
+        
+    }
+    
+}
+
+
 
 struct RaceAppUser {
     let firstName: String
