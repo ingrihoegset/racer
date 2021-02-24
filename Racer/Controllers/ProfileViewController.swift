@@ -57,7 +57,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        scrollView.frame = view.bounds
+        scrollView.frame = view.safeAreaLayoutGuide.layoutFrame
         
         let size = scrollView.width/2
         

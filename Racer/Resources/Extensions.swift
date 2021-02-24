@@ -33,6 +33,15 @@ extension UIView {
     public var right: CGFloat {
         return self.frame.size.width + self.frame.origin.x
     }
+    
+    public var safeAreaHeight: CGFloat{
+        return self.safeAreaLayoutGuide.layoutFrame.height
+    }
+    
+
+    
+    
+    
 }
 
 extension Notification.Name {

@@ -9,16 +9,33 @@ import UIKit
 import FirebaseAuth
 
 class HomeViewController: UIViewController {
+    
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.clipsToBounds = true
+        scrollView.isUserInteractionEnabled = true
+        return scrollView
+    }()
+    
+    private let singleGateButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = Constants.accentColor
+        button.setTitle("Single gate", for: .normal)
+        return button
+    }()
+    
+    private let twoGateButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = Constants.accentColor
+        button.setTitle("Two gates", for: .normal)
+        button.addTarget(self, action: #selector(didTapLinkToPartnerButton), for: .touchUpInside)
+        return button
+    }()
 
     override func viewDidLoad() {
         // test
         super.viewDidLoad()
         view.backgroundColor = Constants.mainColor
-        
-        // Temporary button for linking to user
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-                                                            target: self,
-                                                            action: #selector(didTapLinkToPartnerButton))
 
         // Do any additional setup after loading the view.
     }
@@ -26,8 +43,30 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        // Checks if user is logged in or not and sends to correct view
         validateAuth()
+        
+        // Set up display
+        view.addSubview(scrollView)
+        scrollView.addSubview(singleGateButton)
+        scrollView.addSubview(twoGateButton)
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scrollView.frame = view.safeAreaLayoutGuide.layoutFrame
+    
+        singleGateButton.frame = CGRect(x: Constants.sideSpacing,
+                                        y: Constants.verticalSpacing,
+                                 width: scrollView.width - Constants.sideSpacing * 2,
+                                 height: Constants.fieldHeightLarge)
+        
+        twoGateButton.frame = CGRect(x: Constants.sideSpacing,
+                                     y: singleGateButton.bottom + Constants.verticalSpacing,
+                                 width: scrollView.width - Constants.sideSpacing * 2,
+                                 height: Constants.fieldHeightLarge)
+    }
+
     
     private func validateAuth() {
         if FirebaseAuth.Auth.auth().currentUser == nil {
@@ -49,9 +88,10 @@ class HomeViewController: UIViewController {
     }
     
     func goToSetUpWithPartner(partnerId: String) {
-        let vc = SetUpRaceWithPartnerViewController()
+        let vc = RaceTypeViewController()
         vc.partnerId = partnerId
-        vc.navigationItem.largeTitleDisplayMode = .never
+        vc.title = "Select Race Type"
+        vc.navigationItem.largeTitleDisplayMode = .always
         navigationController?.pushViewController(vc, animated: true)
     }
 

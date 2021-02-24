@@ -25,7 +25,10 @@ struct Constants {
     static let smallCornerRadius: CGFloat = 12
     static let borderWidth: CGFloat = 1
     static let sideSpacing: CGFloat = 15
+    static let verticalSpacing: CGFloat = 20
     static let fieldHeight: CGFloat = 52
+    static let fieldHeightLarge: CGFloat = fieldHeight * 3
+    
     
     
 }
