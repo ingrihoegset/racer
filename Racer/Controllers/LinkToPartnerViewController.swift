@@ -81,12 +81,14 @@ class LinkToPartnerViewController: UIViewController, AVCaptureMetadataOutputObje
                         return
                     }
                     
+                    let safePartnerId = DatabaseManager.safeEmail(emailAddress: partnerId)
+                    
                     // We have the data we need, stop the camera from capturing more frames
                     session.stopRunning()
                     
                     // Dismiss this view controller and pass on data to HomeViewController
                     dismiss(animated: true, completion: { [weak self] in
-                        self?.completion?(partnerId)
+                        self?.completion?(safePartnerId)
                     })
 
                     
