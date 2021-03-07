@@ -10,6 +10,7 @@ import UIKit
 class RaceTypeViewController: UIViewController {
     
     var partnerId = ""
+    var raceId = ""
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -46,7 +47,7 @@ class RaceTypeViewController: UIViewController {
         scrollView.addSubview(speedRaceButton)
         scrollView.addSubview(reactionRaceButton)
 
-        print("pid", partnerId)
+        print("rid", raceId)
         // Do any additional setup after loading the view.
     }
     
@@ -73,16 +74,25 @@ class RaceTypeViewController: UIViewController {
     @objc func didTapRaceType(_ sender: UIButton) {
         
         if (sender.tag == 1) {
+            goToSpeedRaceDetails()
         }
         else {
+            goToReactionRaceDetails()
         }
-        goToRaceDetails()
     }
     
-        
-    func goToRaceDetails() {
-        let vc = RaceDetailsViewController()
+    func goToSpeedRaceDetails() {
+        let vc = SpeedRaceDetailsViewController()
         vc.partnerId = partnerId
+        vc.raceId = raceId
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToReactionRaceDetails() {
+        // Remember to update to Reaction Race VC
+        let vc = SpeedRaceDetailsViewController()
+        vc.partnerId = partnerId
+        vc.raceId = raceId
         navigationController?.pushViewController(vc, animated: true)
     }
 }

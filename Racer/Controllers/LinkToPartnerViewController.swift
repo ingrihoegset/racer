@@ -11,9 +11,28 @@ import AVFoundation
 
 class LinkToPartnerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
+    private var selfSender: Sender? {
+        guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+            return nil
+        }
+        let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
+        
+        return Sender(photoURL: "",
+               senderId: safeEmail,
+               displayName: "")
+    }
+    
+    public static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .long
+        formatter.locale = .current
+        return formatter
+    }()
+    
     var video = AVCaptureVideoPreviewLayer()
     
-    var completion: ((String) -> (Void))?
+    var completion: (([String]) -> (Void))?
     
     //Create capture session
     let session = AVCaptureSession()
@@ -86,27 +105,50 @@ class LinkToPartnerViewController: UIViewController, AVCaptureMetadataOutputObje
                     // We have the data we need, stop the camera from capturing more frames
                     session.stopRunning()
                     
+                    // Create a race entry in database
+                    guard let raceId = createRaceId(partnerId: safePartnerId) else {
+                        return
+                    }
+                    
+                    print("ltp", raceId)
+                    createNewRaceEntry(partnerId: safePartnerId, raceId: raceId)
+                    
                     // Dismiss this view controller and pass on data to HomeViewController
                     dismiss(animated: true, completion: { [weak self] in
-                        self?.completion?(safePartnerId)
+                        self?.completion?([safePartnerId, raceId])
                     })
-
-                    
-                    /*
-                    let vc = SetUpRaceWithPartnerViewController()
-                    let navVC = UINavigationController(rootViewController: vc)
-                    present(navVC, animated: true, completion: {
-                    
-                        vc.partnerId = partnerId
-                    })*/
-                    /*
-                    let alert = UIAlertController(title: "QR Code", message: object.stringValue, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Retake", style: .cancel, handler: nil))
-                    
-                    present(alert, animated: true, completion: nil)*/
                 }
             }
         }
     }
+    
+    private func createNewRaceEntry(partnerId: String, raceId: String) {
+        
+        DatabaseManager.shared.createNewRace(with: partnerId, raceId: raceId, completion: { success in
+            if success {
+                print ("timestamp sent")
+            }
+            else {
+                print("failed to send")
+            }
+        })
+    }
+    
+    private func createRaceId(partnerId: String) -> String? {
+        // date, otherEmail, selfEmail, int
+        guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") as? String else {
+            return nil
+        }
+        
+        let safeEmail = DatabaseManager.safeEmail(emailAddress: currentUserEmail)
+        let safePartnerEmail = DatabaseManager.safeEmail(emailAddress: partnerId)
+
+        let dateString = Self.dateFormatter.string(from: Date())
+        let identifier = "\(safePartnerEmail)_\(safeEmail)_\(dateString)"
+        
+        return identifier
+    }
 }
+
+
 

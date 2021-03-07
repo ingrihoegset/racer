@@ -25,8 +25,18 @@
 		BF795A0125D96B05007A0325 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF795A0025D96B05007A0325 /* DatabaseManager.swift */; };
 		BF795AAD25E2CEFE007A0325 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF795AAC25E2CEFE007A0325 /* StorageManager.swift */; };
 		BF795AB625E58CFC007A0325 /* RaceTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF795AB525E58CFC007A0325 /* RaceTypeViewController.swift */; };
-		BF795ABE25E68212007A0325 /* RaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF795ABD25E68212007A0325 /* RaceDetailsViewController.swift */; };
+		BF795ABE25E68212007A0325 /* SpeedRaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF795ABD25E68212007A0325 /* SpeedRaceDetailsViewController.swift */; };
 		BF795AC425E68B6C007A0325 /* StartGateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF795AC325E68B6C007A0325 /* StartGateViewController.swift */; };
+		BF9EEFCF25F52A52004DB553 /* BarlowSemiCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF9EEFCE25F52A52004DB553 /* BarlowSemiCondensed-Light.ttf */; };
+		BF9EEFD225F52A5A004DB553 /* BarlowSemiCondensed-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF9EEFD125F52A5A004DB553 /* BarlowSemiCondensed-Medium.ttf */; };
+		BF9EEFD525F52A75004DB553 /* BarlowSemiCondensed-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF9EEFD425F52A75004DB553 /* BarlowSemiCondensed-SemiBold.ttf */; };
+		BF9EEFDD25F550C3004DB553 /* longBeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9EEFDC25F550C3004DB553 /* longBeep.wav */; };
+		BF9EEFE025F550CA004DB553 /* longBeepDeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9EEFDF25F550CA004DB553 /* longBeepDeep.wav */; };
+		BF9EEFE325F550E4004DB553 /* shortBeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9EEFE225F550E4004DB553 /* shortBeep.wav */; };
+		BFEA049B25F3FA9D0084F98D /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA049A25F3FA9D0084F98D /* Race.swift */; };
+		BFEA049E25F403030084F98D /* SecondGateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA049D25F403030084F98D /* SecondGateViewController.swift */; };
+		BFEA04A325F433570084F98D /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA04A225F433570084F98D /* CustomPickerView.swift */; };
+		BFEA04A625F4335E0084F98D /* MyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA04A525F4335E0084F98D /* MyPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,8 +62,18 @@
 		BF795A0025D96B05007A0325 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		BF795AAC25E2CEFE007A0325 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		BF795AB525E58CFC007A0325 /* RaceTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceTypeViewController.swift; sourceTree = "<group>"; };
-		BF795ABD25E68212007A0325 /* RaceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailsViewController.swift; sourceTree = "<group>"; };
+		BF795ABD25E68212007A0325 /* SpeedRaceDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedRaceDetailsViewController.swift; sourceTree = "<group>"; };
 		BF795AC325E68B6C007A0325 /* StartGateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGateViewController.swift; sourceTree = "<group>"; };
+		BF9EEFCE25F52A52004DB553 /* BarlowSemiCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowSemiCondensed-Light.ttf"; sourceTree = "<group>"; };
+		BF9EEFD125F52A5A004DB553 /* BarlowSemiCondensed-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowSemiCondensed-Medium.ttf"; sourceTree = "<group>"; };
+		BF9EEFD425F52A75004DB553 /* BarlowSemiCondensed-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowSemiCondensed-SemiBold.ttf"; sourceTree = "<group>"; };
+		BF9EEFDC25F550C3004DB553 /* longBeep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = longBeep.wav; sourceTree = "<group>"; };
+		BF9EEFDF25F550CA004DB553 /* longBeepDeep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = longBeepDeep.wav; sourceTree = "<group>"; };
+		BF9EEFE225F550E4004DB553 /* shortBeep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shortBeep.wav; sourceTree = "<group>"; };
+		BFEA049A25F3FA9D0084F98D /* Race.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
+		BFEA049D25F403030084F98D /* SecondGateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondGateViewController.swift; sourceTree = "<group>"; };
+		BFEA04A225F433570084F98D /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
+		BFEA04A525F4335E0084F98D /* MyPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,12 +141,16 @@
 		BF7959A525D5A063007A0325 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BF9EEFDB25F550B7004DB553 /* Sounds */,
+				BF9EEFD725F52AA1004DB553 /* Fonts */,
+				BFEA04A825F4336F0084F98D /* CustomPicker */,
 				BF79598D25D59FC1007A0325 /* AppDelegate.swift */,
 				BF79598F25D59FC1007A0325 /* SceneDelegate.swift */,
 				BF7959C225D5A1C6007A0325 /* Constants.swift */,
 				BF7959C525D5A1D3007A0325 /* Extensions.swift */,
 				BF795A0025D96B05007A0325 /* DatabaseManager.swift */,
 				BF795AAC25E2CEFE007A0325 /* StorageManager.swift */,
+				BFEA049A25F3FA9D0084F98D /* Race.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -154,8 +178,9 @@
 				BF7959B425D5A139007A0325 /* ProfileViewController.swift */,
 				BF7959B125D5A125007A0325 /* LinkToPartnerViewController.swift */,
 				BF795AB525E58CFC007A0325 /* RaceTypeViewController.swift */,
-				BF795ABD25E68212007A0325 /* RaceDetailsViewController.swift */,
+				BF795ABD25E68212007A0325 /* SpeedRaceDetailsViewController.swift */,
 				BF795AC325E68B6C007A0325 /* StartGateViewController.swift */,
+				BFEA049D25F403030084F98D /* SecondGateViewController.swift */,
 				BF7959AB25D5A0CF007A0325 /* Login&Register */,
 			);
 			path = Controllers;
@@ -184,6 +209,35 @@
 				BF79599B25D59FC6007A0325 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		BF9EEFD725F52AA1004DB553 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BF9EEFCE25F52A52004DB553 /* BarlowSemiCondensed-Light.ttf */,
+				BF9EEFD125F52A5A004DB553 /* BarlowSemiCondensed-Medium.ttf */,
+				BF9EEFD425F52A75004DB553 /* BarlowSemiCondensed-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BF9EEFDB25F550B7004DB553 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				BF9EEFE225F550E4004DB553 /* shortBeep.wav */,
+				BF9EEFDC25F550C3004DB553 /* longBeep.wav */,
+				BF9EEFDF25F550CA004DB553 /* longBeepDeep.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		BFEA04A825F4336F0084F98D /* CustomPicker */ = {
+			isa = PBXGroup;
+			children = (
+				BFEA04A525F4335E0084F98D /* MyPickerView.swift */,
+				BFEA04A225F433570084F98D /* CustomPickerView.swift */,
+			);
+			path = CustomPicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,10 +300,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF9EEFE025F550CA004DB553 /* longBeepDeep.wav in Resources */,
+				BF9EEFD525F52A75004DB553 /* BarlowSemiCondensed-SemiBold.ttf in Resources */,
 				BF79599D25D59FC6007A0325 /* LaunchScreen.storyboard in Resources */,
+				BF9EEFCF25F52A52004DB553 /* BarlowSemiCondensed-Light.ttf in Resources */,
+				BF9EEFD225F52A5A004DB553 /* BarlowSemiCondensed-Medium.ttf in Resources */,
+				BF9EEFDD25F550C3004DB553 /* longBeep.wav in Resources */,
 				BF7959FD25D95C4D007A0325 /* GoogleService-Info.plist in Resources */,
 				BF79599A25D59FC6007A0325 /* Assets.xcassets in Resources */,
 				BF79599525D59FC1007A0325 /* Main.storyboard in Resources */,
+				BF9EEFE325F550E4004DB553 /* shortBeep.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFEA049B25F3FA9D0084F98D /* Race.swift in Sources */,
 				BF7959BE25D5A160007A0325 /* RegisterViewController.swift in Sources */,
 				BF795A0125D96B05007A0325 /* DatabaseManager.swift in Sources */,
 				BF7959B225D5A125007A0325 /* LinkToPartnerViewController.swift in Sources */,
@@ -329,9 +390,12 @@
 				BF7959C625D5A1D3007A0325 /* Extensions.swift in Sources */,
 				BF7959B525D5A139007A0325 /* ProfileViewController.swift in Sources */,
 				BF79599025D59FC1007A0325 /* SceneDelegate.swift in Sources */,
-				BF795ABE25E68212007A0325 /* RaceDetailsViewController.swift in Sources */,
+				BF795ABE25E68212007A0325 /* SpeedRaceDetailsViewController.swift in Sources */,
+				BFEA04A625F4335E0084F98D /* MyPickerView.swift in Sources */,
 				BF795AB625E58CFC007A0325 /* RaceTypeViewController.swift in Sources */,
+				BFEA049E25F403030084F98D /* SecondGateViewController.swift in Sources */,
 				BF795AC425E68B6C007A0325 /* StartGateViewController.swift in Sources */,
+				BFEA04A325F433570084F98D /* CustomPickerView.swift in Sources */,
 				BF79599825D59FC1007A0325 /* Racer.xcdatamodeld in Sources */,
 				BF7959C325D5A1C6007A0325 /* Constants.swift in Sources */,
 			);

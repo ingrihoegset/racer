@@ -81,15 +81,16 @@ class HomeViewController: UIViewController {
         let vc = LinkToPartnerViewController()
         vc.completion = { [weak self] result in
             print("result\(result)")
-            self?.goToSetUpWithPartner(partnerId: result)
+            self?.goToSetUpWithPartner(partnerId: result[0], raceId: result[1])
         }
         let navVC = UINavigationController(rootViewController: vc)
         present(navVC, animated: true)
     }
     
-    func goToSetUpWithPartner(partnerId: String) {
+    func goToSetUpWithPartner(partnerId: String, raceId: String) {
         let vc = RaceTypeViewController()
         vc.partnerId = partnerId
+        vc.raceId = raceId
         vc.title = "Select Race Type"
         vc.navigationItem.largeTitleDisplayMode = .always
         navigationController?.pushViewController(vc, animated: true)

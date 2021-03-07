@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>BarlowSemiCondensed-Light.ttf</string>
+		<string>BarlowSemiCondensed-Medium.ttf</string>
+		<string>BarlowSemiCondensed-SemiBold.ttf</string>
+	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>Use camera to scan your running partner&apos;s QR code</string>
 	<key>CFBundleDevelopmentRegion</key>

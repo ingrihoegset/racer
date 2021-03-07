@@ -65,8 +65,8 @@ extension DatabaseManager {
 
 extension DatabaseManager {
     
-    /// Creates new race with target parter and first timestamp sent
-    public func createNewRace(with partnerEmail: String, startTime: Time, completion: @escaping (Bool) -> Void) {
+    /// Creates new race with target partner and first timestamp sent
+    public func createNewRace(with partnerEmail: String, raceId: String, completion: @escaping (Bool) -> Void) {
         guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String else {
             return
         }
@@ -81,33 +81,28 @@ extension DatabaseManager {
                 return
             }
             
-            let raceId = "race_\(startTime.raceId)"
+            let raceId = "race_\(raceId)"
             
             let newRaceData: [String: Any] = [
                 "raceId": raceId,
                 "other_user_email": partnerSafeEmail,
-                "starttime": startTime.timestamp
             ]
             
             let recipient_newRaceData: [String: Any] = [
                 "raceId": raceId,
                 "other_user_email": currentSafeEmail,
-                "starttime": startTime.timestamp
             ]
             
             // Update recipient conversation entry
-            
             self?.database.child("\(partnerSafeEmail)/races").observeSingleEvent(of: .value, with: { [weak self] snapshot in
                 if var races = snapshot.value as? [[String: Any]] {
                     // append
-                    print("example ", snapshot.value)
                     races.append(recipient_newRaceData)
                     self?.database.child("\(partnerSafeEmail)/races").setValue(races)
                 }
                 else {
                     // create
-                    print("example ", snapshot.value)
-                    self?.database.child("\(partnerSafeEmail)/races").setValue(recipient_newRaceData)
+                    self?.database.child("\(partnerSafeEmail)/races").setValue([recipient_newRaceData])
                 }
             })
             
@@ -124,7 +119,7 @@ extension DatabaseManager {
                         completion(false)
                         return
                     }
-                    self?.finishCreatingRace(raceId: raceId, starttime: startTime, completion: completion)
+                    self?.finishCreatingRace(raceId: raceId, completion: completion)
                 })
             }
             else {
@@ -139,13 +134,14 @@ extension DatabaseManager {
                         completion(false)
                         return
                     }
-                    self?.finishCreatingRace(raceId: raceId, starttime: startTime, completion: completion)
+                    self?.finishCreatingRace(raceId: raceId, completion: completion)
                 })
             }
         })
     }
     
-    private func finishCreatingRace(raceId: String, starttime: Time, completion: @escaping (Bool) -> Void) {
+    // Creates the data base entries with the stand alone races
+    private func finishCreatingRace(raceId: String, completion: @escaping (Bool) -> Void) {
         
         guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String else {
             completion(false)
@@ -157,23 +153,15 @@ extension DatabaseManager {
         let race: [String: Any] = [
             "raceId": raceId,
             "sender_email": safeEmail,
-            "starttime": starttime.timestamp
         ]
-        
-        let value: [String: Any] = [
-            "races": [
-                race
-            ]
-        ]
-        
-        database.child("\(raceId)").setValue(value, withCompletionBlock: { error, _ in
+
+        database.child("\(raceId)").setValue(race, withCompletionBlock: { error, _ in
             guard error == nil else {
                 completion(false)
                 return
             }
             completion(true)
         })
-        
     }
     
     /// Gets all times for a given race
@@ -181,47 +169,81 @@ extension DatabaseManager {
         
     }
     
+    /// Observe if new race is initiated
+    public func observeNewRaceInitiated(with email: String, completion: @escaping (Result<String, Error>) -> Void) {
+        print("observe")
+        database.child("\(email)/races").observe(.value, with: { snapshot in
+            guard let value = snapshot.value as? [[String: Any]] else {
+                completion(.failure(DatabaseError.failedToFetch))
+                return
+            }
+            
+            let races: [Race] = value.compactMap({ dictionary in
+                guard let partnerId = dictionary["other_user_email"] as? String,
+                      let raceId = dictionary["raceId"] as? String
+                else {
+                    return nil
+                }
+                
+                return Race(id: raceId, racePartner: partnerId)
+            })
+            
+            guard let raceId = races.last?.id else {
+                return
+            }
+            
+            completion(.success(raceId))
+        })
+    }
+    
     /// Sends a time with a target race
-    public func sendTimestamp(to race: String, time: Time, completion: @escaping (Bool) -> Void) {
-        let raceId = "race_\(race)"
+    public func sendTimestamp(to race: String, timestamp: Double, completion: @escaping (Bool) -> Void) {
+        let raceId = race
+
         // add new timestamp to race
-        database.child("\(raceId)/races").observeSingleEvent(of: .value, with: { [weak self] snapshot in
+        let ref = database.child("\(raceId)")
+        ref.observeSingleEvent(of: .value, with: { [weak self] snapshot in
+            
             guard let strongSelf = self else {
                 return
             }
             
-            guard var currentTimes = snapshot.value as? [[String: Any]] else {
+            guard var currentRace = snapshot.value as? [String: Any] else {
                 print("failed")
                 print(snapshot.value)
                 completion(false)
                 return
             }
-            print(snapshot.value)
-            // Append new timestamp
-            guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String else {
-                completion(false)
-                return
+            
+            // Update current user race entry
+            if var times = currentRace["times"] as? [Double] {
+                // Races array exists for current user
+                // You should append
+                
+                times.append(timestamp)
+                currentRace["times"] = times
+                ref.setValue(currentRace, withCompletionBlock: { [weak self] error, _ in
+                    guard error == nil else {
+                        completion(false)
+                        return
+                    }
+                })
             }
-            
-            let safeEmail = DatabaseManager.safeEmail(emailAddress: currentEmail)
-            
-            let newTime: [String: Any] = [
-                "raceId": time.raceId,
-                "sender_email": safeEmail,
-                "starttime": time.timestamp
-            ]
-            
-            currentTimes.append(newTime)
-            
-            strongSelf.database.child("\(raceId)/races").setValue(currentTimes) { error, _ in
-                guard error == nil else {
-                    completion(false)
-                    return
-                }
-                completion(true)
+            else {
+                // conversation array does not exist
+                // create it
+                currentRace["times"] = [
+                    timestamp
+                ]
+                
+                ref.setValue(currentRace, withCompletionBlock: { [weak self] error, _ in
+                    guard error == nil else {
+                        completion(false)
+                        return
+                    }
+                })
             }
         })
-        
     }
     
     public enum DatabaseError: Error {
@@ -255,13 +277,6 @@ struct Sender {
     var senderId: String
     var displayName: String
 }
-
-struct Time {
-    var sender: Sender
-    var timestamp: Double
-    var raceId: String
-}
-
 
 struct RaceAppUser {
     let firstName: String

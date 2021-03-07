@@ -53,6 +53,8 @@ class ProfileViewController: UIViewController {
         scrollView.addSubview(qrImageView)
         
         createUserSpecificInterface()
+        
+        startListeningForLink() 
     }
     
     override func viewDidLayoutSubviews() {
@@ -164,14 +166,67 @@ class ProfileViewController: UIViewController {
         }).resume()
     }
     
-
-    
     private func generateQRCodeImage(userIdentifier: String) -> UIImage {
         let data = userIdentifier.data(using: .ascii, allowLossyConversion: false)
         let filter = CIFilter(name: "CIQRCodeGenerator")
         filter?.setValue(data, forKey: "inputMessage")
         let qrImage = UIImage(ciImage: (filter?.outputImage)!)
         return qrImage
+    }
+    
+    private func startListeningForLink() {
+        guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+            return
+        }
+        let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
+        DatabaseManager.shared.observeNewRaceInitiated(with: safeEmail, completion: { [weak self] result in
+            switch result {
+             
+            case .success(let raceId):
+                /*
+                guard !races.isEmpty else {
+                    return
+                }*/
+                
+                // prompt user to join race with partner
+                self?.askToJoinRace(raceId: raceId)
+                
+            case .failure(let error):
+                print("Something went wrong with asking partner to link: \(error)")
+            }
+        })
+    }
+    
+    private func askToJoinRace(raceId: String) {
+        
+        let actionSheet = UIAlertController(title: "Join Race with XXXX",
+                                      message: raceId,
+                                      preferredStyle: .alert)
+        actionSheet.addAction(UIAlertAction(title: "Join",
+                                      style: .destructive,
+                                      handler: { [weak self] _ in
+                                        
+                                        guard let strongSelf = self else {
+                                            return
+                                        }
+                                        
+                                        do {
+                                            let vc = SecondGateViewController()
+                                            vc.raceId = raceId
+                                            strongSelf.navigationController?.pushViewController(vc, animated: true)
+                                            
+                                        }
+                                        catch {
+                                            print("Failed to log out")
+                                        }
+                                        
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel",
+                                            style: .cancel,
+                                            handler: nil))
+        
+        present(actionSheet, animated: true)
     }
 
 }
