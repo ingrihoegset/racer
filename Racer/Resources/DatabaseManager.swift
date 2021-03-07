@@ -171,7 +171,7 @@ extension DatabaseManager {
     
     /// Observe if new race is initiated
     public func observeNewRaceInitiated(with email: String, completion: @escaping (Result<String, Error>) -> Void) {
-        print("observe")
+
         database.child("\(email)/races").observe(.value, with: { snapshot in
             guard let value = snapshot.value as? [[String: Any]] else {
                 completion(.failure(DatabaseError.failedToFetch))
@@ -196,8 +196,31 @@ extension DatabaseManager {
         })
     }
     
-    /// Sends a time with a target race
-    public func sendTimestamp(to race: String, timestamp: Double, completion: @escaping (Bool) -> Void) {
+    /// Observe if current race has ended
+    public func observeRaceHasEnded(raceId: String, completion: @escaping (Bool) -> Void) {
+        print(raceId)
+
+        database.child("\(raceId)/times").observe(.value, with: { snapshot in
+            guard let value = snapshot.value as? [String: Any] else {
+                print("FAILED")
+                completion(false)
+                return
+            }
+            
+            print(value)
+            
+            if value["Endtime"] != nil {
+                completion(true)
+                return
+            }
+            
+            print("last")
+            completion(false)
+        })
+    }
+    
+    /// Sends a beginning time with a target race
+    public func sendStartTimestamp(to race: String, timestamp: Double, completion: @escaping (Bool) -> Void) {
         let raceId = race
 
         // add new timestamp to race
@@ -209,18 +232,17 @@ extension DatabaseManager {
             }
             
             guard var currentRace = snapshot.value as? [String: Any] else {
-                print("failed")
-                print(snapshot.value)
                 completion(false)
                 return
             }
             
-            // Update current user race entry
-            if var times = currentRace["times"] as? [Double] {
-                // Races array exists for current user
-                // You should append
-                
-                times.append(timestamp)
+            // Update start time race entry
+            if var times = currentRace["times"] as? [String: Double] {
+                // Starttime already exists for current race
+                // Replace start time
+
+                times["Starttime"] = timestamp
+
                 currentRace["times"] = times
                 ref.setValue(currentRace, withCompletionBlock: { [weak self] error, _ in
                     guard error == nil else {
@@ -229,11 +251,13 @@ extension DatabaseManager {
                     }
                 })
             }
+            
+            
             else {
-                // conversation array does not exist
+                // times array does not exist
                 // create it
                 currentRace["times"] = [
-                    timestamp
+                    "Starttime": timestamp
                 ]
                 
                 ref.setValue(currentRace, withCompletionBlock: { [weak self] error, _ in
@@ -243,6 +267,56 @@ extension DatabaseManager {
                     }
                 })
             }
+        })
+    }
+    
+    /// Sends an end timestamp with a target race
+    public func sendEndTimestamp(to race: String, timestamp: Double, completion: @escaping (Bool) -> Void) {
+        let raceId = race
+
+        // add new timestamp to race
+        let ref = database.child("\(raceId)")
+        ref.observeSingleEvent(of: .value, with: { [weak self] snapshot in
+            
+            guard let strongSelf = self else {
+                return
+            }
+            
+            guard var currentRace = snapshot.value as? [String: Any] else {
+                completion(false)
+                return
+            }
+            
+            // Update start time race entry
+            if var times = currentRace["times"] as? [String: Double] {
+                // Times array already exists for current race
+                // Add an end time
+                
+                //Check if there is a start time in database
+                if times["Starttime"] != nil {
+                    
+                    // Creates endtime entry
+                    times["Endtime"] = timestamp
+                    
+                    // Updates times dictionary to include end time
+                    currentRace["times"] = times
+                    
+                    // Sets times in database
+                    ref.setValue(currentRace, withCompletionBlock: { [weak self] error, _ in
+                        guard error == nil else {
+                            completion(false)
+                            return
+                        }
+                    })
+                }
+            }
+            else {
+                print("Failed to add end time because no start time found yet.")
+                completion(false)
+                return
+            }
+            
+            completion(true)
         })
     }
     

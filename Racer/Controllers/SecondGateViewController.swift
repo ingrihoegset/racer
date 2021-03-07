@@ -52,13 +52,22 @@ class SecondGateViewController: UIViewController {
         
         let currentTime = Date().currentTimeMillis()
         
-        DatabaseManager.shared.sendTimestamp(to: raceId, timestamp: currentTime, completion: { success in
+        DatabaseManager.shared.sendEndTimestamp(to: raceId, timestamp: currentTime, completion: { [weak self] success in
+            guard let strongSelf = self else {
+                return
+            }
             if success {
                 print ("stop time sent")
+                strongSelf.goToResults()
             }
             else {
                 print("stop time failed to send")
             }
         })
+    }
+    
+    private func goToResults() {
+        let vc = ResultsViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

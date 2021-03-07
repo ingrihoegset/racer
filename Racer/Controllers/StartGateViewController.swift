@@ -111,7 +111,9 @@ class StartGateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Start Race"
+        title = "Start Gate"
+        raceId = "race_\(raceId)"
+        
         view.backgroundColor = Constants.whiteColor
         
         // Add top displays
@@ -127,8 +129,8 @@ class StartGateViewController: UIViewController {
         // Set tekst in top labels
         setDisplayLabelText()
         
-        raceId = "race_\(raceId)"
-
+        // Sets a listener to listen in database if endtime is added to race times
+        startListeningForRaceEnded()
     }
     
     override func viewDidLayoutSubviews() {
@@ -186,7 +188,7 @@ class StartGateViewController: UIViewController {
         
         let currentTime = Date().currentTimeMillis()
         
-        DatabaseManager.shared.sendTimestamp(to: raceId, timestamp: currentTime, completion: { success in
+        DatabaseManager.shared.sendStartTimestamp(to: raceId, timestamp: currentTime, completion: { success in
             if success {
                 print ("stop time sent")
             }
@@ -195,7 +197,33 @@ class StartGateViewController: UIViewController {
             }
         })
     }
-
+    
+    
+    private func startListeningForRaceEnded() {
+        DatabaseManager.shared.observeRaceHasEnded(raceId: raceId, completion: { [weak self] success in
+            guard let strongSelf = self else {
+                return
+            }
+            if success {
+                print ("End time found")
+                strongSelf.unwindToResults()
+            }
+            else {
+                print("No end time found")
+            }
+        })
+    }
+    
+    
+    @objc private func unwindToResults() {
+        DispatchQueue.main.async {
+            if let navController = self.navigationController {
+                navController.popToRootViewController(animated: true)
+                navController.performSegue(withIdentifier: "goToResults", sender: nil)
+            }
+        }
+    }
+    
 }
 
 /// Count down related functions
@@ -262,7 +290,6 @@ extension StartGateViewController {
     
     //Is trigger for every timer interval (1 second)
     @objc private func countDown() {
-        print("counting...")
         countDownLabel.text = String(counter)
         countDownLabel.alpha = 1
         countDownLabel.backgroundColor = UIColor(white: 1, alpha: 0.5)
@@ -280,12 +307,11 @@ extension StartGateViewController {
         }
         else {
             playSound(filename: "longBeep")
-           // viewModel.startRace(laps: Int16(userSelectedLaps), length: Int32(userSelectedLength), type: type)
+            didTapStartTime()
             timer.invalidate()
             countDownLabel.text = "GO!"
             counter = 3
         }
-        print(counter)
     }
 
     

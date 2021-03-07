@@ -47,7 +47,6 @@ class RaceTypeViewController: UIViewController {
         scrollView.addSubview(speedRaceButton)
         scrollView.addSubview(reactionRaceButton)
 
-        print("rid", raceId)
         // Do any additional setup after loading the view.
     }
     

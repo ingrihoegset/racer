@@ -33,6 +33,7 @@
 		BF9EEFDD25F550C3004DB553 /* longBeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9EEFDC25F550C3004DB553 /* longBeep.wav */; };
 		BF9EEFE025F550CA004DB553 /* longBeepDeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9EEFDF25F550CA004DB553 /* longBeepDeep.wav */; };
 		BF9EEFE325F550E4004DB553 /* shortBeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9EEFE225F550E4004DB553 /* shortBeep.wav */; };
+		BF9EEFE625F5722A004DB553 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9EEFE525F5722A004DB553 /* ResultsViewController.swift */; };
 		BFEA049B25F3FA9D0084F98D /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA049A25F3FA9D0084F98D /* Race.swift */; };
 		BFEA049E25F403030084F98D /* SecondGateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA049D25F403030084F98D /* SecondGateViewController.swift */; };
 		BFEA04A325F433570084F98D /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEA04A225F433570084F98D /* CustomPickerView.swift */; };
@@ -70,6 +71,7 @@
 		BF9EEFDC25F550C3004DB553 /* longBeep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = longBeep.wav; sourceTree = "<group>"; };
 		BF9EEFDF25F550CA004DB553 /* longBeepDeep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = longBeepDeep.wav; sourceTree = "<group>"; };
 		BF9EEFE225F550E4004DB553 /* shortBeep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shortBeep.wav; sourceTree = "<group>"; };
+		BF9EEFE525F5722A004DB553 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		BFEA049A25F3FA9D0084F98D /* Race.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
 		BFEA049D25F403030084F98D /* SecondGateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondGateViewController.swift; sourceTree = "<group>"; };
 		BFEA04A225F433570084F98D /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				BF795ABD25E68212007A0325 /* SpeedRaceDetailsViewController.swift */,
 				BF795AC325E68B6C007A0325 /* StartGateViewController.swift */,
 				BFEA049D25F403030084F98D /* SecondGateViewController.swift */,
+				BF9EEFE525F5722A004DB553 /* ResultsViewController.swift */,
 				BF7959AB25D5A0CF007A0325 /* Login&Register */,
 			);
 			path = Controllers;
@@ -382,6 +385,7 @@
 				BFEA049B25F3FA9D0084F98D /* Race.swift in Sources */,
 				BF7959BE25D5A160007A0325 /* RegisterViewController.swift in Sources */,
 				BF795A0125D96B05007A0325 /* DatabaseManager.swift in Sources */,
+				BF9EEFE625F5722A004DB553 /* ResultsViewController.swift in Sources */,
 				BF7959B225D5A125007A0325 /* LinkToPartnerViewController.swift in Sources */,
 				BF795AAD25E2CEFE007A0325 /* StorageManager.swift in Sources */,
 				BF7959AD25D5A10D007A0325 /* HomeViewController.swift in Sources */,

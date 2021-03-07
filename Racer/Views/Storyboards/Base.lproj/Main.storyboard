@@ -58,6 +58,21 @@
             </objects>
             <point key="canvasLocation" x="571" y="-1005"/>
         </scene>
+        <!--Results View Controller-->
+        <scene sceneID="roz-tB-0zs">
+            <objects>
+                <viewController id="KQ9-DJ-ykY" customClass="ResultsViewController" customModule="Racer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D8c-8l-TpB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="1s2-LG-jkw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="soa-Jo-sFl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-917" y="567"/>
+        </scene>
         <!--Item-->
         <scene sceneID="uQU-49-0Zv">
             <objects>
@@ -71,6 +86,7 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="c8P-sf-MUE"/>
+                        <segue destination="KQ9-DJ-ykY" kind="presentation" identifier="goToResults" id="q3q-X3-wu8"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgZ-h4-JSx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
