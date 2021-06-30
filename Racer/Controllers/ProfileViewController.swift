@@ -175,10 +175,17 @@ class ProfileViewController: UIViewController {
     }
     
     private func startListeningForLink() {
+        
+        print("listening for link")
+        
         guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
             return
         }
+        
         let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
+        
+        print("listening for change attached to: ", safeEmail)
+        
         DatabaseManager.shared.observeNewRaceInitiated(with: safeEmail, completion: { [weak self] result in
             switch result {
              

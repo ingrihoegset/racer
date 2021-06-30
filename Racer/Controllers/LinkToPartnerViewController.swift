@@ -100,6 +100,8 @@ class LinkToPartnerViewController: UIViewController, AVCaptureMetadataOutputObje
                         return
                     }
                     
+                    print(partnerId)
+                    
                     let safePartnerId = DatabaseManager.safeEmail(emailAddress: partnerId)
                     
                     // We have the data we need, stop the camera from capturing more frames
@@ -110,7 +112,7 @@ class LinkToPartnerViewController: UIViewController, AVCaptureMetadataOutputObje
                         return
                     }
                     
-                    print("ltp", raceId)
+                    print("linked to partner: ", raceId)
                     createNewRaceEntry(partnerId: safePartnerId, raceId: raceId)
                     
                     // Dismiss this view controller and pass on data to HomeViewController

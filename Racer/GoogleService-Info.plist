@@ -36,5 +36,7 @@
 	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:163413689947:ios:33791ae74723d4474a617e</string>
+	<key>DATABASE_URL</key>
+	<string>https://racer-1cd7e-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
