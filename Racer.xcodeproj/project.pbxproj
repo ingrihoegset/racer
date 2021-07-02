@@ -131,8 +131,8 @@
 				BF7959FC25D95C4D007A0325 /* GoogleService-Info.plist */,
 				BF7959A825D5A070007A0325 /* Controllers */,
 				BF7959A725D5A06A007A0325 /* Views */,
-				BF7959A625D5A068007A0325 /* ViewModels */,
 				BF7959AA25D5A0BE007A0325 /* Models */,
+				BFFB6949268F1E990080DA62 /* ViewModels */,
 				BF7959A525D5A063007A0325 /* Resources */,
 				BF79599E25D59FC6007A0325 /* Info.plist */,
 				BF79599625D59FC1007A0325 /* Racer.xcdatamodeld */,
@@ -155,13 +155,6 @@
 				BFEA049A25F3FA9D0084F98D /* Race.swift */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		BF7959A625D5A068007A0325 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		BF7959A725D5A06A007A0325 /* Views */ = {
@@ -241,6 +234,13 @@
 				BFEA04A225F433570084F98D /* CustomPickerView.swift */,
 			);
 			path = CustomPicker;
+			sourceTree = "<group>";
+		};
+		BFFB6949268F1E990080DA62 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
